@@ -15,7 +15,9 @@ resource "google_service_account" "service_account" {
   
 }
 
-
+module "bucket" {
+  source = "./modules/backend"
+}
 
 module "network" {
   source = "./modules/network"
@@ -29,7 +31,7 @@ module "network" {
 
 module "cluster" {
   source = "./modules/cluster"
-  
+
   cluster_name = var.cluster_name
   region = var.region
   network_name = var.network_name
